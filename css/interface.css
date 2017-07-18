@@ -1,0 +1,61 @@
+body, html {
+    font-size: 40px;
+    font-family: Cambria, sans-serif;
+}
+
+h1{
+    text-align: center;
+    color:#660f66;
+    text-decoration: underline;
+    font-family: "cursive", "monospace", "Adobe Caslon Pro Bold", "Segoe UI", sans-serif;
+    margin-top: 1.8rem;
+    margin-left: 240px;
+    background-color:bisque;
+    width: 900px;
+}
+
+hr {
+    color: red;
+}
+
+#inputbox {
+    width: 500px;
+    height: 30px;
+    font-size: 25px;
+    color: darkred;
+    background: lightyellow;
+    margin-left: 30px;
+}
+
+.buttonarea {
+    margin-left: 50px;
+    margin-top: 40px;
+    line-height: 70px;
+    background:lightgoldenrodyellow;
+    letter-spacing: .4rem;
+}
+
+#numberarea{
+    margin-left: 60px;
+}
+
+.operator {
+    width: 50px;
+    height:50px;
+    background: lightgreen;
+}
+
+.number {
+    width: 60px;
+    height: 60px;
+    font-size: 40px;
+    background: lightblue;
+}
+
+.operator, .number{
+    margin-top: .4rem;
+}
+
+#point {
+    width:129px;
+}
