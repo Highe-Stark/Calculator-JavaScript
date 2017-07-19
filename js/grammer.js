@@ -2,57 +2,64 @@
  * Created by Higher Stark on 2017/7/18.
  */
 
-import "token.js"
-
 function expression(ts)
 {
-    let token = Token.construct();
     let lhs = term(ts);
+    let token = ts.nexttoken();
     let rhs = 0;
-    token = ts.next();
-    if (token===null) return lhs;
-    else if (typeof (token.value)==="string"){
-        while (token.value==="+" || token.value==="-"){
+    if (token === null) return lhs;
+    else if (typeof (token.value) === "string"){
+        while (true){
             if (token.value === "+"){
                 rhs = term(ts);
+                if (rhs === null) throw "Invalid expression";
                 lhs += rhs;
             }
             else if (token.value === "-"){
                 rhs = term(ts);
+                if (rhs === null) throw "Invalid expression";
                 lhs -= rhs;
             }
             else {
                 ts.putback(token);
                 break;
             }
-            token = ts.next();
+            token = ts.nexttoken();
         }
     }
     return lhs;
 }
 
 function term(ts) {
-    let token = Token.construct();
     let lhs = primary(ts);
-    token = ts.next();
+
+    //   >
+    console.log(lhs);
+
+    let token = ts.nexttoken();
+
+    //   >
+    console.log(token.value);
+
+    //token = ts.nexttoken();
     if (token.value === null) {
         return lhs;
     }
-    if (typeof(token.value)!=="string"){
+    if (typeof(token.value) !== "string"){
         throw "Invalid expression!";
     }
     else {
         while (true){
 
-            if (token.getvalue()==="*"){
+            if (token.getvalue() === "*"){
                 let rhs = primary(ts);
 
-                if (typeof(rhs)!=="number") throw "Invalid expression!";
+                if (typeof(rhs) !== "number") throw "Invalid expression!";
 
                 lhs *= rhs;
             }
 
-            else if (token.getvalue==="/"){
+            else if (token.getvalue === "/"){
                 let rhs = primary(ts);
 
                 if (rhs === 0) {
@@ -70,7 +77,7 @@ function term(ts) {
             else if ( token.getvalue === "%"){
                 let rhs = primary(ts);
 
-                if (rhs!=="number" || rhs===0 || !Number.isInteger(rhs)){
+                if (rhs !== "number" || rhs === 0 || !Number.isInteger(rhs)){
                     throw "Mod by invalid value!";
                 }
 
@@ -82,44 +89,35 @@ function term(ts) {
                 break;
             }
 
-            token = ts.next();
+            token = ts.nexttoken();
         }
     }
     return lhs;
 }
 
 function primary(ts){
-    let token = Token.construct();
-    token = ts.next();
-    if (token.getvalue() === null) return null;
-    let lhs = 0;
+    let lhs = null;
+    let token = ts.nexttoken();
+    if (token.getvalue() === null) return lhs;
     while (true){
         if (typeof (token.getvalue()) === "number"){
             lhs = token.getvalue();
         }
         else if (token.getvalue() === "^"){
-            token = ts.next();
-            if (token.getvalue() === null) throw "Invalid expression!";
-            if (typeof(token.getvalue()) === "number") {
-                let rhs = token.getvalue();
+            if (lhs === null) throw "Invalid expression";
+            let rhs = primary(ts);
+            if (rhs === null) throw "Invalid expression";
+            if (typeof ( rhs ) === "number"){
                 lhs = Math.pow(lhs, rhs);
             }
-            if (token.getvalue() === "("){
-                let rhs = expression(ts);
-                if (rhs === null) throw "Invalid expression!";
-                if (typeof(rhs) !== "number") {
-                    throw "Invalid expression";
-                }
-                token = ts.next();
-                if (token.getvalue() !== ")"){
-                    throw "Invalid expression";
-                }
+            else {
+                throw "Invalid expression";
             }
         }
         else if (token.getvalue() === "("){
             lhs = expression(ts);
             if (lhs === null || typeof (lhs) !== "number") throw "Invalid expression";
-            token = ts.next();
+            token = ts.nexttoken();
             if (token.getvalue() !== ")"){
                 throw "Invalid expression";
             }
@@ -127,17 +125,32 @@ function primary(ts){
         else if (token.getvalue() === "|"){
             lhs = expression(ts);
             if (lhs === null || typeof(lhs) !== "number") throw "Invalid expression";
-            token = ts.next();
+            token = ts.nexttoken();
             if (token.getvalue() !== "|"){
                 throw "Invalid expression";
             }
             lhs = Math.abs(lhs);
         }
         else if (token.getvalue() === ")") throw "( lost!";
-        else {
-            throw "Invalid expression";
+        else if (token.getvalue() === "+") {
+            if (lhs !== null){
+                ts.putback(token);
+                break;
+            }
+            lhs = primary(ts);
         }
-        token = ts.next();
+        else if (token.getvalue() === "-") {
+            if (lhs !== null) {
+                ts.putback(token);
+                break;
+            }
+            lhs = -primary(ts);
+        }
+        else {
+            ts.putback(token);
+            break;
+        }
+        token = ts.nexttoken();
     }
     return lhs;
 }

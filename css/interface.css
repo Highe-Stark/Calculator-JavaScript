@@ -8,14 +8,16 @@ h1{
     color:#660f66;
     text-decoration: underline;
     font-family: "cursive", "monospace", "Adobe Caslon Pro Bold", "Segoe UI", sans-serif;
-    margin-top: 1.8rem;
-    margin-left: 240px;
+    margin-top: .6rem;
+    margin-left: 40px;
+    font-size:.9rem;
     background-color:bisque;
-    width: 900px;
+    width: 600px;
 }
 
 hr {
     color: red;
+    width: 40px;
 }
 
 #inputbox {
@@ -25,6 +27,14 @@ hr {
     color: darkred;
     background: lightyellow;
     margin-left: 30px;
+}
+
+#outputbox {
+    width: 100px;
+    height: 30px;
+    font-size: 25px;
+    background-color: lightskyblue;
+    margin-left:30px;
 }
 
 .buttonarea {
@@ -40,8 +50,9 @@ hr {
 }
 
 .operator {
-    width: 50px;
+    width: 90px;
     height:50px;
+    font-size: .6rem;
     background: lightgreen;
 }
 
@@ -58,4 +69,28 @@ hr {
 
 #point {
     width:129px;
+}
+
+#foot {
+    text-align: right;
+    font-size: .3rem;
+    margin-right:60px;
+}
+
+.control{
+    font-size: .8rem;
+    font-weight: bold;
+    margin: 15px;
+}
+
+#result {
+    width: 40px;
+}
+
+#backspace {
+    width: 180px;
+}
+
+#ac {
+    width: 60px;
 }

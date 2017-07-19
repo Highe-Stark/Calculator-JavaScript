@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Calculator</title>
+  <link rel = "Calculator-1 icon" href = "Calculator-1.ico">
   <link rel = "stylesheet" type="text/css" href="css/interface.css">
 </head>
 <p>
@@ -15,6 +16,14 @@
 
   <p>
     <input id="inputbox" title="Input Box" placeholder="Type something here" type="text" value=""/>
+    <button id = "result" name = "=" type = "button" class = "control">=</button>
+    <br/>
+    <input id = "outputbox" title = "Output box" placeholder = "0" type="submit" value=""/>
+    <br/>
+    <span>
+      <button id = "backspace" name = "backspace" type = "button" class = "control">backspace</button>
+      <button id = "ac" name = "clear" type = "button" class = "control">AC</button>
+    </span>
   </p>
   <p id = "buttonarea">
     <span id="operatorarea" class="operatorbutton">
@@ -23,6 +32,12 @@
       <button id="multiple" name="buttonMultiple" type="button" class="operator">*</button>
       <button id="divide" name="buttonDivide" type="button" class="operator">/</button>
       <button id="mod" name="buttonMod" type="button" class="operator">%</button>
+      <br/>
+      <button id = "left-pare" name = "left parenthesis" type = "button" class = "operator">(</button>
+      <button id = "right-pare" name = "right parenthesis" type = "button" class = "operator">)</button>
+      <button id = "abs" name = "abs" type = "button" class = "operator">| |</button>
+      <button id = "sqrt" name = "sqrt" type = "button" class = "operator">sqrt( )</button>
+      <button id = "pow" name = "pow" type = "button" class = "operator">^</button>
     </span>
     <br/>
     <p id="numberarea" title="buttons-of-number">
@@ -49,6 +64,8 @@
       Made by Higher Stark.
     </p>
   </footer>
+<script src="js/token.js"></script>
+<script src="js/grammer.js"></script>
 <script src="js/reaction.js"></script>
 </body>
 </html>
