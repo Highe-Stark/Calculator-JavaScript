@@ -2,6 +2,8 @@
  * Created by Higher Stark on 2017/7/18.
  */
 
+let M = undefined;
+
 let Token = {
 
     //   > constructor of Token class
@@ -31,6 +33,7 @@ let tokenStream = {
 
     //   > constructor of tokenStream
     construct: function() {
+        let rem = false;
         let tokenstream = {};
         tokenstream.stream = [];
 
@@ -66,6 +69,24 @@ let tokenStream = {
                     tokenstream.push(token);
                     i = j - 1;
                     //continue;
+                }
+                else if (s[i] === 'R'){
+                    if (M === undefined){
+                        throw "No memory stored";
+                    }
+                    else {
+                        let token = Token.construct();
+                        token.set(M);
+                        tokenstream.push(token);
+                    }
+                }
+                else if (s[i] === 'M'){
+                    if (i+1!==s.length){
+                        throw "Illegal M";
+                    }
+                    else {
+                        tokenstream.rem = true;
+                    }
                 }
                 else if (isOperator(s[i])){
                     if (s[i] === "s"){

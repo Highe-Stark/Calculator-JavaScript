@@ -42,6 +42,8 @@ let button_point = document.getElementById("point");
 let bsp = document.getElementById("backspace");
 let ac = document.getElementById("ac");
 let res = document.getElementById("result");
+let memory = document.getElementById("memory");
+let remember = document.getElementById("remember");
 
 plusButton.addEventListener("click", function(){
     input_char("+");
@@ -106,6 +108,13 @@ button9.addEventListener("click", function(){
 button_point.addEventListener("click", function(){
     input_char(".");
 });
+memory.addEventListener("click", function() {
+    input_char("M");
+})
+remember.addEventListener("click",function()
+{
+    input_char("R");
+})
 bsp.addEventListener("click", function(){
     let s = inputBox.value;
     inputBox.value = s.substring(0, s.length - 1);
@@ -129,5 +138,9 @@ res.addEventListener("click", function(){
     if (typeof (res) === "string"){
         output.setAttribute("width", "300px");
     }
-    output.value = res;
+    if (ts.rem){
+        M = res;
+    }
+    output.setAttribute("value", res);
+    //output.value = res;
 });

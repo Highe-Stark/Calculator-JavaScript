@@ -81,7 +81,7 @@ function term(ts) {
                     throw "Mod by invalid value!";
                 }
 
-                lhs %= rhs;
+                lhs = lhs % rhs;
             }
 
             else {

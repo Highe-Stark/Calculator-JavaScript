@@ -17,12 +17,12 @@ h1{
 
 hr {
     color: red;
-    width: 40px;
+    width: 1200px;
 }
 
 #inputbox {
     width: 500px;
-    height: 30px;
+    height: 36px;
     font-size: 25px;
     color: darkred;
     background: lightyellow;
@@ -30,8 +30,8 @@ hr {
 }
 
 #outputbox {
-    width: 100px;
-    height: 30px;
+    width: 300px;
+    height: 40px;
     font-size: 25px;
     background-color: lightskyblue;
     margin-left:30px;
