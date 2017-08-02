@@ -2,10 +2,13 @@
  * Created by Higher Stark on 2017/8/1.
  */
 
+var calculate = require("../reaction.js");
+var expect = require("../node_modules/chai/bin/chai").expect;
+require("../../node_modules/jasmine/bin/jasmine.js");
+
 describe("Calculator function", function(){
     it ("test input 1", function(){
-        let ts = tokenStream.construct("1");
-        expect(1).toEqual(expression(ts));
+        expect(calculate(1)).toEqual(1);
     });
 
     it("test input -2", function(){
