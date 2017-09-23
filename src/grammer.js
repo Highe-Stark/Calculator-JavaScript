@@ -154,3 +154,5 @@ function primary(ts){
     }
     return lhs;
 }
+
+module.exports = expression;

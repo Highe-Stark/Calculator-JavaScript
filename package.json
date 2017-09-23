@@ -1,7 +1,14 @@
 {
-  "name": "$package_name$",
+  "name": "Calculator",
   "version": "0.0.1",
-  "dependencies": {
-    $END$
-  }
+  "main": "index.html",
+  "description": "A calculator written in JavaScript.",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*",
+    "requirejs": "^2.3.4"
+  },
+  "author": "Higher",
+  "license": "ISC"
 }

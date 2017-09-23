@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Test</title>
+    <link rel="stylesheet" media="all" href="../node_modules/mocha/mocha.css">
 </head>
 <body>
-$END$
+    <div id="mocha"><p>Index</p></div>
+    <div id="messages"></div>
+    <div id="fixtures"></div>
+    <script src="../node_modules/mocha/mocha.js"></script>
+    <script src="../node_modules/chai/chai.js"></script>
+    <script src="../src/token.js"></script>
+    <script src = "../src/grammer.js"></script>
+    <script src = "../src/reaction.js"></script>
+    <script>mocha.setup('bdd')</script>
+    <script src="reaction.test.js"></script>
+    <script>mocha.run();</script>
 </body>
 </html>

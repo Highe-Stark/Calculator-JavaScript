@@ -149,3 +149,5 @@ function isOperator(ch)
     return ( ch === "+" || ch === "-" || ch === "*" || ch === "/" || ch === "%" ||
         ch ==="|" || ch === "^" || ch === "s" ||  ch === "!");
 }
+
+module.exports = [Token, tokenStream];

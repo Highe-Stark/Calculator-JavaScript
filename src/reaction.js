@@ -16,6 +16,13 @@ function input_changed(){
     console.log(s);
 }
 
+function calculate(s){
+    ts = tokenStream.construct(s);
+    return expression(ts);
+}
+
+module.exports = calculate;
+
 inputBox.addEventListener("input", input_changed);
 
 let plusButton = document.getElementById("plus");
